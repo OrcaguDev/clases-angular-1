@@ -1,11 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 body {
-  background: #f0f8ff; /* Un azul muy claro como fallback */
+  background: #f0f8ff; 
   background: linear-gradient(135deg, #f0f8ff, #e6f3ff, #d9eeff);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;

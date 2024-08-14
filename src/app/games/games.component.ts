@@ -6,7 +6,7 @@ import { GameModalComponent } from './modal.component';
   standalone: true,
   imports: [CommonModule, GameModalComponent],
   templateUrl: './games.component.html',
-  styleUrl: './games.component.css'
+  styleUrl: '../../styles.css'
 })
 export class GamesComponent {
   games = [
