@@ -5,25 +5,7 @@ import { GameModalComponent } from './modal.component';
   selector: 'app-games',
   standalone: true,
   imports: [CommonModule, GameModalComponent],
-  template: `
-    <ul class="games-list" id="games-list">
-      @for (game of games; track game.id) {
-        <li class="game-item" (click)="showGameDetails(game)">
-          <span class="game-id">{{game.id}}</span>
-          <span class="game-name">{{game.name}}</span>
-          <span class="game-year">{{game.year}}</span>
-        </li>
-      }
-    </ul>
-    @if (selectedGame) {
-      <app-game-modal 
-        [game]="selectedGame" 
-        (close)="closeModal()"
-        (delete)="eliminarJuegoSeleccionado()"
-        (save)="guardarCambiosJuego($event)"
-      ></app-game-modal>
-    }
-  `,
+  templateUrl: './games.component.html',
   styleUrl: './games.component.css'
 })
 export class GamesComponent {
@@ -64,4 +46,30 @@ export class GamesComponent {
   showGameDetails(game: any) {
     this.selectedGame = game;
   }
+
+  handleAddGame() {
+    const nameInput = document.getElementById('name') as HTMLInputElement;
+    const yearInput = document.getElementById('year') as HTMLInputElement;
+    
+    const name = nameInput.value.trim();
+    const year = parseInt(yearInput.value, 10);
+    
+    if (name && !isNaN(year)) {
+      this.addGame(name, year);
+      
+      // Limpiar los campos después de agregar el juego
+      nameInput.value = '';
+      yearInput.value = '';
+      
+      console.log('Juego añadido:', { name, year });
+      console.log('Lista de juegos actualizada:', this.games);
+    } else {
+      alert('Por favor, ingrese un nombre y un año válido');
+    }
+  }
+
+  editGame(id: number) {
+    console.log(id);
+  }
+
 }

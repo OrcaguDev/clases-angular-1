@@ -1,7 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    background: #536976;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #292E49, #536976);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #292E49, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    height: 100vh;
-  }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #f0f8ff; /* Un azul muy claro como fallback */
+  background: linear-gradient(135deg, #f0f8ff, #e6f3ff, #d9eeff);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

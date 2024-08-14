@@ -1,0 +1,38 @@
+<div class="container mx-auto px-4">
+  <div class="flex flex-wrap -mx-4">
+    <div class="w-full px-4">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-bold mb-4">Juegos</h2>
+        <ul class="space-y-2">
+          @for (game of games; track game.id) {
+            <li class="cursor-pointer hover:bg-gray-100 p-2 rounded" (click)="showGameDetails(game)">
+              <span class="mr-2 text-gray-600">{{game.id}}</span>
+              <span class="font-medium">{{game.name}}</span>
+              <span class="ml-2 text-gray-500">{{game.year}}</span>
+            </li>
+          }
+        </ul>
+        @if (selectedGame) {
+          <app-game-modal 
+            [game]="selectedGame" 
+            (close)="closeModal()"
+            (delete)="eliminarJuegoSeleccionado()"
+            (save)="guardarCambiosJuego($event)"
+          ></app-game-modal>
+        }
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold mb-4">Agregar Juego</h2>
+        <form class="space-y-4">
+          <div>
+            <input type="text" placeholder="Nombre" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="name">
+          </div>
+          <div>
+            <input type="number" placeholder="Año" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="year">
+          </div>
+          <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" (click)="handleAddGame()">Agregar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

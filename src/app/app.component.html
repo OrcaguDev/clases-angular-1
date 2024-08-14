@@ -1,76 +1,17 @@
-@if (isLoggedIn) {
-  <div class="topnav">
-    <a class="active" href="#home">Inicio</a>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="column main-content">
-        <div class="card">
-          <h2>Juegos</h2>
-          <ul class="game-list">
-            <app-games></app-games>
-          </ul>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+        <a class="text-white text-xl font-bold" href="#">Mi Sitio</a>
+        <ul class="flex space-x-4">
+            <li>
+            <a class="text-white hover:text-gray-300" routerLink="/" routerLinkActive="font-bold" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+            </li>
+            <li>
+            <a class="text-white hover:text-gray-300" routerLink="/games" routerLinkActive="font-bold">Juegos</a>
+            </li>
+            <li>
+            <a class="text-white hover:text-gray-300" routerLink="/pokemones" routerLinkActive="font-bold">Servicios - Pokemon</a>
+            </li>
+        </ul>
         </div>
-        <div class="card">
-          <h2>Agregar Juego</h2>
-          <form class="game-form">
-            <div class="form-group">
-              <input type="text" placeholder="Nombre" class="form-input" id="name">
-            </div>
-            <div class="form-group">
-              <input type="number" placeholder="Año" class="form-input" id="year">
-            </div>
-            <button type="button" class="btn-primary" (click)="addGame()">Agregar</button>
-          </form>
-        </div>
-      </div>
-      <div class="column sidebar">
-        <div class="card">
-          <h2>Bienvenido, {{username}}</h2>
-          <img src="http://github.com/{{username}}.png" alt="Foto de perfil" 
-          style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
-
-          <button class="btn-primary" (click)="isLoggedIn = false; onLogout()">Cerrar sesión</button>
-        </div>
-        <div class="card">
-          <h2>Juegos - Servicio Estatico</h2>
-          <p>{{juegos}}</p> <!--se muestra el array de juegos de los servicios-->
-        </div>
-
-        <div class="card">
-          <h2>Pokemones - Servicio con API's</h2>
-          @if (!mostrarResultados) {
-            <form class="game-form">
-              <div class="form-group">
-                <label for="pokemon-name">Digite el nombre del Pokémon:</label>
-                <input type="text" id="pokemon-name" name="nombrePokemon" placeholder="Nombre del Pokémon" class="form-input">
-              </div>
-              <button type="button" class="btn-primary" (click)="obtenerPokemones()">Buscar Pokémon</button>
-            </form>
-          } @else {
-            <div class="resultados-pokemon">
-              <h3>Resultados</h3>
-              <img [src]="resultadosPokemon.imagen" alt="Imagen del Pokémon" class="pokemon-imagen">
-              <h4>{{ resultadosPokemon.nombre }}</h4>
-              <button type="button" class="btn-secondary" (click)="volverABuscar()">Buscar otro Pokémon</button>
-            </div>
-          }
-        </div>
-    </div>
-  </div>
-  </div>
-}@else {
-    <div class="container-login">
-        <div class="login-box">
-          <h2 class="login-title">Bienvenido</h2>
-          <p class="login-subtitle">Ingresa tu nombre de usuario para continuar</p>
-          <form class="login-form" (submit)="$event.preventDefault(); onLogin(usernameInput.value)">
-            <div class="login-input-group">
-              <input type="text" id="login-username" placeholder=" " #usernameInput required>
-              <label for="login-username">Nombre de usuario</label>
-            </div>
-            <button type="submit" class="login-button">Ingresar</button>
-          </form>
-        </div>
-      </div>  
-}
+    </nav>
+    <router-outlet></router-outlet>
