@@ -119,6 +119,7 @@ import { CommonModule } from '@angular/common';
   `]
 })
 export class GameModalComponent {
+  //Comunicacion entre componentes
   @Input() game: any;
   @Output() close = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();

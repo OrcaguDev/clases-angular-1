@@ -11,13 +11,11 @@
     <div class="card-body">
       <h2 class="card-title h4 mb-3">Pokemones - Servicio con API's</h2>
       @if (!mostrarResultados) {
-        <form>
           <div class="mb-3">
             <label for="pokemon-name" class="form-label">Digite el nombre del Pokémon:</label>
             <input type="text" class="form-control" id="pokemon-name" name="nombrePokemon" placeholder="Nombre del Pokémon">
           </div>
           <button type="button" class="btn btn-primary" (click)="obtenerPokemones()">Buscar Pokémon</button>
-        </form>
       } @else {
         <div class="text-center">
           <h3 class="h5 mb-3">Resultados</h3>

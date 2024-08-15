@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import Swal from 'sweetalert2';
 
 export const guardVerificarRutaGuard: CanActivateFn = (route, state): Observable<boolean> => {
   const authService = inject(AuthService);
@@ -13,15 +12,9 @@ export const guardVerificarRutaGuard: CanActivateFn = (route, state): Observable
   return authService.verificarAutenticacion().pipe(
     switchMap(estaAutenticado => {
       if (!estaAutenticado) {
-        return Swal.fire({
-          title: 'Acceso denegado',
-          text: 'Debes iniciar sesión para acceder a esta página',
-          icon: 'warning',
-          confirmButtonText: 'Entendido'
-        }).then(() => {
-          router.navigate(['/login']);
-          return false;
-        });
+        alert('Acceso denegado. Debes iniciar sesión para acceder a esta página');
+        router.navigate(['/login']);
+        return of(false);
       }
       return of(true);
     })

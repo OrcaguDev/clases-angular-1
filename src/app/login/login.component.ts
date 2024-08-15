@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  isRegister : boolean = true;
     email:string= '';
     password:string= '';
   constructor(private authService: AuthService, private router: Router) { }
@@ -36,6 +37,10 @@ export class LoginComponent {
       });
   }
 
+  openRegister(){
+    this.router.navigate(['/register']) 
+  }
+
   onRegister() {
     const email = (document.getElementById('email') as HTMLInputElement).value;
     const password = (document.getElementById('password') as HTMLInputElement).value;
@@ -44,8 +49,7 @@ export class LoginComponent {
       console.log('Por favor, ingrese un email y contraseña válidos');
       return;
     }
-  
-    this.authService.registrar({ email, password })
+      this.authService.registrar({ email, password })
       .subscribe(registrado => {
         if (registrado) {
           console.log('Usuario registrado con éxito');

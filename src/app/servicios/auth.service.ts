@@ -40,15 +40,12 @@ export class AuthService {
     return of(this.getLocalStorage('usuarioActual')).pipe(
       map(usuarioActual => {
         if (!usuarioActual) {
-          console.log('No hay información de sesión');
           return null;
         }
         try {
           const sesionInfo = JSON.parse(usuarioActual);
-          console.log('Información de sesión:', sesionInfo);
           return sesionInfo;
         } catch (error) {
-          console.error('Error al analizar la información de sesión:', error);
           return null;
         }
       })
