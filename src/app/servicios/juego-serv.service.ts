@@ -18,4 +18,7 @@ export class JuegoServService {
   ObtenerPokemonUrl(nombrePokemon: string): Observable<any> {
     return this.http.get(`${this.url}${nombrePokemon.toLowerCase()}`);
   }
+  getPokemonShiny(nombrePokemon: string): Observable<any> {
+    return this.http.get(`${this.url}${nombrePokemon.toLowerCase()}/shiny`);
+  }
 }

@@ -1,15 +1,17 @@
 import { Routes } from '@angular/router';
-import { PokemonesComponent } from './pokemon/pokemones/pokemones.component';
-import { GamesComponent } from './games/games.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { NoAuthComponent } from './no-auth/no-auth.component';
-import { LoginComponent } from './login/login.component';
+import { PokemonesComponent } from './components/pokemones/pokemones.component';
+import { GamesComponent } from './components/games/games.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { LoginComponent } from './components/login/login.component';
+
+//Error 404
+import { Error404Component } from './components/error404/error404.component';
 
 //Guard
-import { guardVerificarRutaGuard } from './guard/guard-verificar-ruta.guard';
+import { guardVerificarRutaGuard } from './guard/guard/guard-verificar-ruta.guard';
 
 //Componente hijo
-import { ShinyComponent } from './pokemon/shiny/shiny.component';
+import { ShinyComponent } from './components/shiny/shiny.component';
 
 export const routes: Routes = [
     {
@@ -23,16 +25,12 @@ export const routes: Routes = [
         component: InicioComponent
     },
     {
-        path: 'no-auth',
-        component: NoAuthComponent
-    },
-    {
         path: 'pokemones',
         component: PokemonesComponent,
         canActivate: [guardVerificarRutaGuard],
         children:[
             {
-                path: 'shiny',
+                path: 'shiny/:nombre',
                 component: ShinyComponent
             }
         ]
@@ -45,5 +43,9 @@ export const routes: Routes = [
         path: 'games',
         canActivate: [guardVerificarRutaGuard],
         component: GamesComponent
+    },
+    {
+        path: '**',
+        component: Error404Component
     }
 ];

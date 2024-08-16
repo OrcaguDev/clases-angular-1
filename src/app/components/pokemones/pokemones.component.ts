@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { JuegoServService } from '../../servicios/juego-serv.service'; //importacion del servicio
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 
 
 
@@ -12,10 +12,11 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './pokemones.component.css'
 })
 export class PokemonesComponent {
+  nombrePokemonShiny: string = "";
   resultadosPokemon: any ={};
   mostrarResultados: boolean = false;
   juegos =""; //variable para almacenar los juegos
-  constructor(private juegoServ: JuegoServService) {
+  constructor(private juegoServ: JuegoServService, private router: Router) {
     this.juegos = juegoServ.ObtenerJuegos().join(", "); //se almacena el array de juegos en la variable
   }
 
@@ -42,5 +43,15 @@ export class PokemonesComponent {
   volverABuscar(){
     this.mostrarResultados = false;
     this.resultadosPokemon = null;
+  }
+
+  buscarShiny(){
+    if(this.nombrePokemonShiny){
+      this.router.navigate(['pokemones', 'shiny', this.nombrePokemonShiny]);
+    }
+  }
+
+  actualizarNombrePokemonShiny(event: Event){
+    this.nombrePokemonShiny = (event.target as HTMLInputElement).value;
   }
 }

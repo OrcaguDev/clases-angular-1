@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NoAuthComponent } from './no-auth.component';
+import { Error404Component } from './error404.component';
 
-describe('NoAuthComponent', () => {
-  let component: NoAuthComponent;
-  let fixture: ComponentFixture<NoAuthComponent>;
+describe('Error404Component', () => {
+  let component: Error404Component;
+  let fixture: ComponentFixture<Error404Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NoAuthComponent]
+      imports: [Error404Component]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NoAuthComponent);
+    fixture = TestBed.createComponent(Error404Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

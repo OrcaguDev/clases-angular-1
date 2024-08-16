@@ -28,4 +28,13 @@
       }
     </div>
   </div>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h2 class="card-title h4 mb-3">Componente Hijo / Query Params - Pokemon Shiny</h2>
+      <input type="text" class="form-control" id="pokemon-shiny" placeholder="Nombre del Pokémon Shyni" [value]="nombrePokemonShiny" (input)="actualizarNombrePokemonShiny($event)">
+    </div>
+    <button type="button" class="btn btn-secondary" (click)="buscarShiny()">Buscar Shiny</button>
+  </div>
+  <router-outlet></router-outlet>
 </div>
